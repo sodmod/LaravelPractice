@@ -18,8 +18,8 @@ class PostController extends Controller
     {
         //
         $posts = Post::latest()->paginate(6);
-//            Post::latest()->get();
 
+//            Post::latest()->get();
 //            Post::orderBy("created_at", "desc")-> get();
 
         return view("posts.index", ["posts"=>$posts]);

@@ -7,11 +7,12 @@
 
         {{-- Session Messages --}}
         @if(session("success"))
-            <div>
-                <p>{{session("success")}}</p>
+            <div class="mb-2">
+                <x-flashMsg msg="{{session('success')}}"/>
             </div>
         @endif
 
+        {{-- Post form --}}
         <form action="{{route("posts.store")}}" method="post">
             @csrf
 
@@ -32,7 +33,6 @@
                 <textarea name="body" rows="5" class="input
                 @error("body") ring-red-500 @enderror">{{old("body")}}</textarea>
 
-
                 @error("body")
                 <p class="error">{{ $message }}</p>
                 @enderror
@@ -41,5 +41,16 @@
             {{-- Submit Button--}}
             <button class="btn">Create</button>
         </form>
+    </div>
+    <div>
+        <h2>Your posts</h2>
+        <div class="grid grid-cols-2 gap-6">
+            @foreach($posts as $post)
+                <x-postCard :post="$post"/>
+            @endforeach
+        </div>
+        <div>
+            {{$posts->links()}}
+        </div>
     </div>
 </x-layout>

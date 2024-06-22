@@ -52,12 +52,12 @@
             @foreach($posts as $post)
                 <x-postCard :post="$post">
                     {{--  Update post --}}
-                    <form action="{{route('posts.edit', $post)}}"
-                          method="post">
-                        @csrf
-                        @method('PUT')
-                        <button class="bg-blue-500 text-white px-2 py-1 text-xs rounded-md">Update</button>
-                    </form>
+                    <a href="{{route('posts.edit', $post)}}" class="bg-blue-500 text-white
+                    px-2 py-1 text-xs rounded-md"
+                    >
+                        Update
+                    </a>
+
                     {{--Delete Post--}}
                     <form action="{{route('posts.destroy', $post)}}"
                           method="post">

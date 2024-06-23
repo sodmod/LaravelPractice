@@ -1,6 +1,11 @@
 @props(['post', 'full'=> false])
 
 <div class="card">
+
+    <div>
+        <img src="{{asset('storage/'.$post->image)}}" alt="">
+    </div>
+
     {{-- Title --}}
     <h2 class="font-bold text-xl">{{$post->title}}</h2>
 
